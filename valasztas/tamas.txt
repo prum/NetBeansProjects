@@ -1,0 +1,77 @@
+package valasztas;
+public class Szavazatok {
+private int ker;
+private int darab;
+private String vnev;
+private String knev;
+private String part;
+
+public Szavazatok(String[] adat){
+ker = Integer.parseInt(adat[0]); // konvertáljuk számmá
+darab = Integer.parseInt(adat[1]); // konvertáljuk számmá
+vnev = adat[2]; // string
+knev = adat[3]; // string
+part = adat[4]; // string
+}
+
+public int getKer() // Visszatér a kerület számával
+{return ker;}
+public int getDarab() // Visszatér a szavazatok számával
+{return darab;}
+public String getVnev() // Visszatér a vez.névvel
+{return vnev;}
+public String getKnev() // Visszatér a ker.névvel
+{return knev;}
+public String getPart() // Visszatér a párt névvel
+{return part;}
+
+}
+------------------------------------------------
+package valasztas;
+import java.io.*; // IO modul
+import java.util.ArrayList; // Arraylist modul
+import java.util.Scanner;
+public class Valasztas {
+public static void main(String[] args) { // Főfüggvény
+RandomAccessFile raf; // File típus
+ArrayList<Szavazatok> voksok = new ArrayList<Szavazatok>(); // Szavazatok tip. tömblista létrehozása
+// 1. Olvassa be az szavazatok.txt állományban található foglalások adatát! 
+try // Probálja meg a fájlt beolvasni
+{
+raf = new RandomAccessFile("C://forras//szavazatok.txt","r"); // Fájl hozzárendelése
+for( String sor = raf.readLine(); sor != null; sor = raf.readLine() )
+voksok.add(new Szavazatok(sor.split(" ")));
+// Soronként beolvassuk szóközönként szétdarabolva és betéve a Szavazatok típusba, hozzáfúzve a tömblistához
+raf.close(); // Fájl bezárása
+} 
+catch (Exception e) { // Hiba esetén itt megy tovább
+System.err.println("Fájlbeolvasási hiba " + e.getMessage()); }
+
+for (int i=0; i<voksok.size(); i++) // A forgalom tömblista kiírása foreach cilkussal
+System.out.println(voksok.get(i).getVnev()+":"+voksok.get(i).getDarab());
+//2. Hány képviselőjelölt indult a helyhatósági választáson? 
+System.out.println("A választásokon "+voksok.size()+" darab jelölt indult!!");
+//3. Kérje be egy képviselőjelölt vezetéknevét és utónevét, majd írja ki a képernyőre, hogy az illető hány 
+szavazatot kapott! Ha a beolvasott név nem szerepel a nyilvántartásban, úgy
+//jelenjen meg a képernyőn az „Ilyen nevű képviselőjelölt nem szerepel a nyilvántartásban!” figyelmeztetés! 
+A feladat megoldása során feltételezheti, hogy nem indult két azonos nevű képviselőjelölt a választáson.
+------------------------
+System.out.println("Kérem adja meg a keresett jelölt VEZ. nevét!");
+Scanner bev = new Scanner(System.in);
+String vnevbe = bev.nextLine();
+System.out.println("Kérem adja meg a keresett jelölt KER. nevét!");
+Scanner bek = new Scanner(System.in);
+String knevbe = bek.nextLine();
+System.out.println(vnevbe+" "+knevbe); 
+int i=0;
+while( i<voksok.size() && (!vnevbe.equals(voksok.get(i).getVnev()) || !knevbe.equals(voksok.get(i).getKnev()) ))
+i++;
+if (i<voksok.size())
+System.out.println(vnevbe+" "+knevbe+":"+voksok.get(i).getDarab()); 
+else
+System.out.println("Nincs ilyen nevű az adatbázisban!");
+-------------------------
+
+-------------------------
+}
+}

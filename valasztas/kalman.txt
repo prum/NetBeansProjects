@@ -1,0 +1,29 @@
+//6. Melyik jelölt kapta a legtöbb szavazatot? 
+Jelenítse meg a képernyőn a képviselő vezetékés utónevét, 
+valamint az őt támogató párt rövidítését, vagy azt, hogy független! 
+    int max=0;
+    for (i=0; i<voksok.size(); i++)
+    if (voksok.get(i).getDarab() > voksok.get(max).getDarab())
+    max=i;
+        System.out.println("Legtöbb. szav.kap: " + voksok.get(max).getVnev());
+//7. Határozza meg, hogy az egyes választókerületekben kik lettek a képviselők! 
+Írja ki a választókerület sorszámát, a győztes vezeték- és utónevét
+    Szavazatok[] MAXOK = new Szavazatok[100]; 
+    for (i=0; i<voksok.size(); i++)
+    {
+    if ( MAXOK[voksok.get(i).getKer()] == null) 
+        MAXOK[voksok.get(i).getKer()]=voksok.get(i);
+    else
+    if (voksok.get(i).getDarab()> MAXOK[voksok.get(i).getKer()].getDarab())
+        MAXOK[voksok.get(i).getKer()] = voksok.get(i);
+    }
+
+    for(i=0;i<15;i++) 
+
+    if (MAXOK[i] != null )
+        System.out.println(i+".kerület győztese "+MAXOK[i]);
+		
+		
+		------------------------------
+		public String toString()
+{return vnev+" : "+darab;}
