@@ -1,0 +1,24 @@
+
+4-0: 2 darab
+0-2: 5 darab
+1-1: 5 darab
+3-2: 2 darab
+0-1: 10 darab
+1-0: 16 darab
+2-0: 14 darab
+1-2: 8 darab
+3-1: 6 darab
+1-3: 4 darab
+2-4: 1 darab
+3-0: 3 darab
+3-4: 1 darab
+2-3: 3 darab
+2-1: 9 darab
+0-0: 7 darab
+3-3: 1 darab
+2-2: 8 darab
+4-3: 1 darab
+4-1: 2 darab
+1-5: 1 darab
+4-2: 1 darab
+1-4: 1 darab

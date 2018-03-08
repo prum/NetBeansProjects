@@ -1,0 +1,8 @@
+Ha az adott rekord több mezőből áll, akkor a szeparáló karakter
+beállításával (split methodus) részekre bontva az adott sort
+be tudjuk olvasni egy tömbbe.
+Ennek a tömbnek a tartalmát (soronkénti beolvasás)
+a konstruktor segítségével bele tesszük a korábban elkészített struktúrába.
+Az adott strukturában a bejövő adatokat tároló atributumok mellett létre hozhatunk
+olyan atributumokat is amelyek az előzöekből számolnak.
+A rugalmasabb kezelés miatt sokszor célszerű a tömb helyett tömblistát haszálni
