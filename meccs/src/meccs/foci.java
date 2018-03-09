@@ -109,15 +109,16 @@ for (Meccs i:foci) // Kiírjuk a Meccs tömblista elemeit
 
     String[] erLista = new String[foci.size()];
     int[] gyakorisag = new int[foci.size()];
-    String aktEr;
+    String aktEr,aktFer;
     int erDb = 0;
     int j;
     for (i = 1; i <= foci.size()-1; i++) {
-    j = 1;
-    aktEr = foci.get(i).getEredmeny();
-    while ((j <= erDb) && !(aktEr.equals(erLista[j - 1]))) {
-    j++;
-    }
+        j = 1;
+        aktEr = foci.get(i).getEredmeny();
+        while ((j <= erDb) && !(aktEr.equals(erLista[j - 1])))
+        {
+            j++;
+        }
     if (j <= erDb) {
     gyakorisag[j - 1]++;
     } 
@@ -155,7 +156,39 @@ for (Meccs i:foci) // Kiírjuk a Meccs tömblista elemeit
         System.out.println("A stat.txt fájl kiírása befejeződött. \n");
 	}catch (IOException e){System.out.print(e);}
 
-	}
+        //1., Adja meg a Lelkesek csapata hány meccset játszott otthon?
+        int meccsekdb=0;
+        for (i=0; i<foci.size(); i++) 
+            {
+            if (foci.get(i).getHazai().equals("Lelkesek"))
+                meccsekdb++;        
+            }
+        System.out.println("A Lelkesek csapata "+meccsekdb+" meccset játszott otthon.");
+        
+        //2., Adja meg melyik meccsen volt a legnagyobb gólkülönbség!
+        int aktkul=0;
+        int maxkul=0;
+        int maxIndex=0;
+        for (i=0; i<foci.size()-1; i++) 
+            {
+                aktkul=Math.abs(foci.get(i).getVegHazai()-foci.get(i).getVegVendeg());
+                //System.out.println(aktkul);
+            if (aktkul>maxkul)
+            {
+                maxkul=aktkul;
+                maxIndex=i;
+            }
+            }
+            System.out.println("A legnagyobb gólkülönbség: "+maxkul+" a "+foci.get(i).toString()+" meccsen volt.");
+     //4., Adja hányszor született 2-nél több gól a 2. félidőben!
+     int goldb=0;
+     for (i=0; i<foci.size()-1; i++) 
+            {
+                if ((foci.get(i).getVegHazai()+foci.get(i).getVegVendeg()-(foci.get(i).getFelidoHazai()+foci.get(i).getFelidoVendeg()))>2 )
+                    goldb++;
+            }
+            System.out.println("2-nél több gól a 2. félidőben "+goldb+" szor volt.");
+     }
     }
     
 

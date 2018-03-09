@@ -52,6 +52,9 @@ public boolean getMegfordit()
 public String getEredmeny() // Visszatér az eredménnyel
 {return hazaigol+"-"+vendeggol;}
 
+public String getFEredmeny() // Visszatér az eredménnyel
+{return vendeggol+"-"+hazaigol;}
+
 public String toString() // Kiíró metódus
 {return fordulo+". "+hazai+" - "+vendeg+" "+hazaigol+"-"+vendeggol+" ("+fihazaigol+"-"+fivendeggol+")";}
 
